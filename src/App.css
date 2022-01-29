@@ -32,18 +32,73 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  margin-top: 14px;
+}
+
+.listPage {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin: 0 1vh;
+  margin-bottom: 1vh;
+  overflow: auto;
+  height: 74vh;
+}
+
+.boxList {
+  height: 67vh;
+  overflow: auto;
+}
+
+.boxList::-webkit-scrollbar {
+  width: 0;
+}
+
+.person {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.newPerson {
+  color: lightcoral;
+  width: 100%;
+  height: 35px;
+  font-size: medium;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-bottom: 2vh;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: lightgoldenrodyellow;
+  border: none;
+}
+
+.newPerson:hover {
+  color: red;
+}
+
+.newPerson:active {
+  color: lightcoral;
+}
+
+.messagePage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .App-link {
@@ -51,32 +106,33 @@
 }
 
 .Message-box {
-  width: 90%;
+  -webkit-box-flex: 10;
+      -ms-flex-positive: 10;
+          flex-grow: 10;
   height: 75vh;
   -webkit-box-shadow: inset 0 0 20px grey;
           box-shadow: inset 0 0 20px grey;
-  padding: 40px;
+  padding: 3vh;
+  margin-right: 3vh;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
   -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  overflow: hidden;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  overflow-y: auto;
   border-radius: 15px;
 }
 
+.Message-box::-webkit-scrollbar {
+  width: 0;
+}
+
 .Message {
-  padding: 10px;
+  padding: 5px;
   background-color: green;
   display: inline-block;
   border-radius: 10px;
@@ -131,11 +187,6 @@
 }
 
 .Input-box {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -143,8 +194,7 @@
       -ms-flex-align: center;
           align-items: center;
   min-height: 120px;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  margin: 0px 25px;
 }
 
 .input-text {
