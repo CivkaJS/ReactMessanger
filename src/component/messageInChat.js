@@ -1,7 +1,7 @@
 import React from "react";
-import './App.scss';
+import '../App.scss';
 
-class Message extends React.Component{
+class MessageInChat extends React.Component{
 
     render(){
         return (
@@ -15,4 +15,4 @@ class Message extends React.Component{
     }    
 }
 
-export default Message; 
+export default MessageInChat; 
