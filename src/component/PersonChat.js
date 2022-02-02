@@ -10,10 +10,10 @@ import Typography from '@mui/material/Typography';
 
  function AlignItemsList(props) {
   return (
-    <a href='#' style={{
-                        textDecoration: "none",
-                        width: '80%'
-                        }}>
+    <div  style={{
+                    textDecoration: "none",
+                    width: '80%'
+                  }}>
     <List sx={{ width: '100%', 
                 maxWidth: 360, 
                 bgcolor: 'background.paper', 
@@ -54,7 +54,7 @@ import Typography from '@mui/material/Typography';
       </ListItem>
       {/* <Divider variant="fullWidth"/> */}
     </List>
-    </a>
+    </div>
   );
 }
 export default AlignItemsList;
