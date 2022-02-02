@@ -32,14 +32,14 @@ import Messager from "../component/MesssagePage";
 //     }
 // }
 
-const Chats = () => {
+const Chats = (props) => {
     // const [chatList, setChatList] = useState(saveChat);
     // let {chatId} = useParams();
     // console.log(chatId);
 
     return  (
         <div>
-            <Messager/>
+            <Messager chats={props.chats}/>
         </div>
     ) 
 }
