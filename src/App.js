@@ -4,7 +4,7 @@ import Input from './Input';
 import Message from './MessageList'
 import AlignItemsList from './List'
 import { useState, useEffect } from 'react';
-import AddReactionOutlinedIcon from '@mui/icons-material/AddReactionOutlined';;
+import AddReactionOutlinedIcon from '@mui/icons-material/AddReactionOutlined';
 
 function App() {
   const [messageBox, setMessageBox] = useState([]);
@@ -80,7 +80,7 @@ function App() {
         </div>
         
       </div>
-      <Input eventClick = {updateMessage} eventLineUpdate = {lineUpdate} inputTextLine = {lineText}/>
+        <Input eventClick = {updateMessage} eventLineUpdate = {lineUpdate} inputTextLine = {lineText}/>
     </div>
   );
 }
