@@ -1,14 +1,6 @@
 import * as React from 'react';
 import '../App.scss';
 import { useState } from 'react';
-// import Box from '@mui/material/Box';
-// import List from '@mui/material/List';
-// import ListItem from '@mui/material/ListItem';
-// import { ListItemButton } from '@mui/material';
-// import CottageOutlinedIcon from '@mui/icons-material/CottageOutlined';
-// import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
-// import AddReactionOutlinedIcon from '@mui/icons-material/AddReactionOutlined';
-// import { Link } from "react-router-dom";
 import {
     Routes,
     Route
@@ -18,6 +10,7 @@ import Chats from './Chat';
 import Profile from './Profile';
 import ControlPanel from '../component/controlPanel';
 import NoChats from './NoChats';
+// import { create } from '@mui/material/styles/createTransitions';
 
 const saveChat = {
   id_1: {
@@ -43,7 +36,7 @@ const saveChat = {
           author: "Someone"
       }]
   },
-  id_3: {
+  id_39: {
       name: 'Igor',
       Status: 'Online',
       Avatar: "/static/images/avatar/1.jpg",
@@ -54,18 +47,53 @@ const saveChat = {
   }
 }
 
+export const MyHandler = React.createContext();
+
 const Router = () => {
   const [chatList, setChatList] = useState(saveChat);
 
+   const handleAddChat = () => {
+      
+      const lastChatId = Object.keys(chatList).length-1;
+      const numberOfLastChat = Object.keys(chatList)[lastChatId].split('_');
+      numberOfLastChat[1] = Number(numberOfLastChat[1]) + 1;
+      const newChatID = numberOfLastChat.join('_');
+
+      const addChat = {
+        [newChatID]: {
+                  name: 'Ivan',
+                  Status: 'Online',
+                  Avatar: "/static/images/avatar/1.jpg",
+                  message:[{
+                     text: "Message from 1 me chat",
+                     author: "me"
+                  }]
+                }
+      }
+      setChatList({...chatList,...addChat});
+   }
+
+   const handleDeleteChat = () => {
+      console.log('Delete');
+ }
+
     return(
     <React.Fragment>
-        <ControlPanel/>
+      <MyHandler.Provider add={handleAddChat}
+                          delete={handleDeleteChat}
+                          >
+      <ControlPanel/>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/profile" element={<Profile/>}/>
-        <Route path="/chats/:chatId" element={<Chats chats={chatList}/>}/>
+        <Route path="/chats/:chatId" element={<Chats 
+                                                      chats={chatList}
+                                                      handleAddChat = {handleAddChat}
+                                                      handleDeleteChat = {handleDeleteChat}
+                                                  />}/>
         <Route path="*" element={<NoChats chats={chatList}/>}/>
       </Routes> 
+      </MyHandler.Provider>
     </React.Fragment>     
     )
 }

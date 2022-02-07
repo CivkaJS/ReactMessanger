@@ -8,7 +8,19 @@ const PersonChat = (props) => {
             <div className="boxList">
                 {Object.keys(props.newChat).map((person, index)=>(
                     <Link to={`/chats/${person}`}  key={index} className='person'>
-                    <div className='personChat' style={{marginLeft: person === props.idNewChat ? '20px' : '0px'}}>
+                    <div className='personChat' style={{marginLeft: person === props.idNewChat ? '5%' : '0px'}}>
+                      <AlignItemsList 
+                          addName = {props.newChat[person].name}
+                          addStatus = {props.newChat[person].Status}
+                          addFoto = {props.newChat[person].Avatar}
+                          handleDeleteChat = {props.handleDeleteChat}
+                      />
+                    </div>
+                    </Link>
+                  ))}
+                {/* {Object.keys(props.addChat).map((person, index)=>(
+                    <Link to={`/chats/${person}`}  key={index} className='person'>
+                    <div className='personChat' style={{marginLeft: person === props.idNewChat ? '5%' : '0px'}}>
                       <AlignItemsList 
                           addName = {props.newChat[person].name}
                           addStatus = {props.newChat[person].Status}
@@ -16,7 +28,7 @@ const PersonChat = (props) => {
                       />
                     </div>
                     </Link>
-                  ))}
+                  ))} */}
             </div>
         )
     }

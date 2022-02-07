@@ -6,14 +6,16 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
+import ClearIcon from '@mui/icons-material/Clear';
 
 
  function AlignItemsList(props) {
+
   return (
-    <div  style={{
-                    textDecoration: "none",
-                    width: '80%'
-                  }}>
+    // <div  style={{
+    //                 textDecoration: "none",
+    //                 width: '80%'
+    //               }}>
     <List sx={{ width: '100%', 
                 maxWidth: 360, 
                 bgcolor: 'background.paper', 
@@ -27,12 +29,17 @@ import Typography from '@mui/material/Typography';
               }}
                 >
       <ListItem alignItems="flex-start" style={{paddingTop: "0px",
-                                                paddingBottom: "0px"
+                                                paddingBottom: "0px",
+                                                display: 'flex',
+                                                alignItems: 'center'
                                                }}>
         <ListItemAvatar>
           <Avatar alt="Remy Sharp"
                   //src="/static/images/avatar/1.jpg"
-                  src={props.addFoto}  
+                  src={props.addFoto} 
+                  sx={{
+                        marginTop: '0px',
+                      }} 
                   />
         </ListItemAvatar>
         <ListItemText
@@ -51,10 +58,16 @@ import Typography from '@mui/material/Typography';
                                 </React.Fragment>
                                 }
         />
+        <button onClick={props.handleDeleteChat} style={{
+                                                            border: 'none',
+                                                            backgroundColor: 'inherit',
+                                                        }}>
+          <ClearIcon />
+        </button>
       </ListItem>
-      {/* <Divider variant="fullWidth"/> */}
     </List>
-    </div>
+    
+    // </div>
   );
 }
 export default AlignItemsList;

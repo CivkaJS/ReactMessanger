@@ -5,12 +5,25 @@ import './index.css';
 import Router from './pages/Router'
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from './store';
+
+export const MyThemeContext = React.createContext();
+
+const handleDeleteChat = () => {
+  console.log('Delete');
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Router/>
-    </BrowserRouter>
+    <Provider store={store}>
+      <MyThemeContext.Provider value={{ theme: 'dark' }}>
+      {/* <MyThemeContext.Provider value={handleDeleteChat}> */}
+        <BrowserRouter>
+          <Router/>
+        </BrowserRouter>
+      </MyThemeContext.Provider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
