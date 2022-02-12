@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { useParams } from "react-router-dom";
 import '../App.scss';
 import Box from '@mui/material/Box';
@@ -18,39 +18,39 @@ const Messager = (props) => {
     console.log(contextValue.theme);
     console.log(handler);
 
-    const [messageBox, setMessageBox] = useState([]);
-    let [lineText, setLineText] = useState('');
+    // const [messageBox, setMessageBox] = useState([]);
+    // let [lineText, setLineText] = useState('');
 
     let {chatId} = useParams();
   
-    useEffect(()=>{
-      if(((messageBox.length+1)%2) === 0){
-        setMessageBox([{
-              text: '^-^', 
-              author: 'bot'
-          },
-          ...messageBox]);
-      }
-    },[messageBox])
+    // useEffect(()=>{
+    //   if(((messageBox.length+1)%2) === 0){
+    //     setMessageBox([{
+    //           text: '^-^', 
+    //           author: 'bot'
+    //       },
+    //       ...messageBox]);
+    //   }
+    // },[messageBox])
 
-    const updateMessage = () => {
-      if(lineText){
-      setMessageBox([{
-                        text: lineText, 
-                        author: 'me'
-                    },
-                    ...messageBox]);
-                    lineText = '';
-                    setLineText ('');
-                  }
-    }
+    // const updateMessage = () => {
+    //   if(lineText){
+    //   setMessageBox([{
+    //                     text: lineText, 
+    //                     author: 'me'
+    //                 },
+    //                 ...messageBox]);
+    //                 lineText = '';
+    //                 setLineText ('');
+    //               }
+    // }
   
-    const lineUpdate =(event) =>{
-      setLineText (event.target.value);
-    }
+    // const lineUpdate =(event) =>{
+    //   setLineText (event.target.value);
+    // }
     
 
-    return props.chats[chatId]?(
+    return chatId?(
         <Box sx={{
                 width: '100%',
                 height: '90vh',
@@ -64,16 +64,21 @@ const Messager = (props) => {
         >
            <div className="messagePage">
               <div className='listPage'>
-                <AddButton addPersonChat={props.handleAddChat}/>
-                <PersonChat newChat={props.chats} 
-                            idNewChat={chatId}
-                            handleDeleteChat = {props.handleDeleteChat}
+                <AddButton
+                            //  addPersonChat={props.handleAddChat}
+                             />
+                <PersonChat 
+                            // newChat={props.chats} 
+                            // idNewChat={chatId}
+                            // handleDeleteChat = {props.handleDeleteChat}
                             />
               </div >
               {/* <MessageBox inputMessage={messageBox} /> */}
-              <MessageBox inputMessage={messageBox} renderMessage={props.chats[chatId].message} />
+              {/* <MessageBox inputMessage={messageBox} renderMessage={props.chats[chatId].message} /> */}
+              <MessageBox/>
             </div> 
-            <InputLine eventClick = {updateMessage} eventLineUpdate = {lineUpdate} inputTextLine = {lineText}/>
+            {/* <InputLine eventClick = {updateMessage} eventLineUpdate = {lineUpdate} inputTextLine = {lineText}/> */}
+            <InputLine/>
         </Box>
     ) :<NoChats/>
 } 
