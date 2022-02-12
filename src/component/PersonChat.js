@@ -24,6 +24,7 @@ import ClearIcon from '@mui/icons-material/Clear';
                 }}
         style={{boxShadow: "10px 0px 10px 0px rgb(4 29 49 / 20%)",
                 marginTop: "5px",
+                height: "5vh",
                 borderRadius: "5px 20px 5px",
                 backgroundColor: "lightgreen"
               }}
@@ -58,7 +59,8 @@ import ClearIcon from '@mui/icons-material/Clear';
                                 </React.Fragment>
                                 }
         />
-        <button onClick={props.handleDeleteChat} style={{
+        <button style={{
+        // <button onClick={props.handleDeleteChat} style={{
                                                             border: 'none',
                                                             backgroundColor: 'inherit',
                                                         }}>

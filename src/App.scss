@@ -47,6 +47,7 @@
 .boxList{
   height: 67vh;
   overflow: auto;
+  margin-top: 20px;
 }
 
 .boxList::-webkit-scrollbar {
@@ -110,9 +111,19 @@
   padding: 3vh;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  justify-content: flex-end;
   overflow-y: auto;
   border-radius: 15px;  
+}
+
+.profileBox{
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  width: 40vh;
+  justify-content: space-evenly;
+  margin-top: 15vh;
 }
 
 .noneMessageBox{
@@ -159,6 +170,22 @@
 
 .chatForm{
   display: flex;
+}
+
+.addNewChat{
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+  width: 90%;
+}
+
+.addNewChatBox{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  width: 50vh;
+  height: 22vh;
 }
 
 .Input-box{

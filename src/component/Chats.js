@@ -1,34 +1,25 @@
 import * as React from 'react';
 import '../App.scss';
 import AlignItemsList from './PersonChat';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const PersonChat = (props) => {
+    const chats = useSelector(state => state.chatList);
+    const {chatId} = useParams();
+
      return(
             <div className="boxList">
-                {Object.keys(props.newChat).map((person, index)=>(
-                    <Link to={`/chats/${person}`}  key={index} className='person'>
-                    <div className='personChat' style={{marginLeft: person === props.idNewChat ? '5%' : '0px'}}>
-                      <AlignItemsList 
-                          addName = {props.newChat[person].name}
-                          addStatus = {props.newChat[person].Status}
-                          addFoto = {props.newChat[person].Avatar}
-                          handleDeleteChat = {props.handleDeleteChat}
-                      />
-                    </div>
-                    </Link>
-                  ))}
-                {/* {Object.keys(props.addChat).map((person, index)=>(
-                    <Link to={`/chats/${person}`}  key={index} className='person'>
-                    <div className='personChat' style={{marginLeft: person === props.idNewChat ? '5%' : '0px'}}>
-                      <AlignItemsList 
-                          addName = {props.newChat[person].name}
-                          addStatus = {props.newChat[person].Status}
-                          addFoto = {props.newChat[person].Avatar}
-                      />
-                    </div>
-                    </Link>
-                  ))} */}
+                {chats.map((chat, index)=>(
+                                            <Link to={`/chats/${chat.id}`}  key={index} className='person'>
+                                              <div className='personChat' style={{marginLeft: chat.id === chatId ? '5%' : '0px'}}>
+                                                <AlignItemsList 
+                                                     addName = {chat.name}
+                                                 />
+                                              </div>
+                                            </Link>
+                                          )
+                          )}
             </div>
         )
     }

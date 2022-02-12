@@ -10,9 +10,9 @@ import { store } from './store';
 
 export const MyThemeContext = React.createContext();
 
-const handleDeleteChat = () => {
-  console.log('Delete');
-}
+// const handleDeleteChat = () => {
+//   console.log('Delete');
+// }
 
 ReactDOM.render(
   <React.StrictMode>

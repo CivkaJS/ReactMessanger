@@ -28,6 +28,7 @@ const ControlPanel = () => {
                         <ListItem>
                             <Link style={{
                                      width: '100%',
+                                     textDecoration: "none",
                                     }} 
                                     to={"/"}>
                                     <ListItemButton sx={{
@@ -39,13 +40,17 @@ const ControlPanel = () => {
                                                             backgroundColor: 'lightgreen',
                                                         },
                                                        }}>
-                                        <CottageOutlinedIcon></CottageOutlinedIcon>                         
+                                        <CottageOutlinedIcon sx={{
+                                                                    marginRight: "20px",
+                                                                }}/>
+                                        <h3>HOME</h3>                         
                                     </ListItemButton> 
                             </Link>    
                         </ListItem>
                         <ListItem>
                             <Link style={{
                                         width: '100%',
+                                        textDecoration: "none",
                                         }} 
                                         to="/profile">
                                         <ListItemButton sx={{
@@ -56,13 +61,17 @@ const ControlPanel = () => {
                                                                 backgroundColor: 'lightgreen',
                                                             },
                                                             }}>
-                                            <AddReactionOutlinedIcon></AddReactionOutlinedIcon>
+                                            <AddReactionOutlinedIcon sx={{
+                                                                    marginRight: "20px",
+                                                                }} />
+                                            <h3>PROFILE</h3>  
                                         </ListItemButton>
                             </Link>
                         </ListItem>
                         <ListItem>
                             <Link style={{
                                         width: '100%',
+                                        textDecoration: "none",
                                         }} 
                                         to="/chats">
                                         <ListItemButton sx={{
@@ -74,7 +83,10 @@ const ControlPanel = () => {
                                                                 backgroundColor: 'lightgreen',
                                                                 }
                                                             }}>
-                                            <MailOutlineOutlinedIcon></MailOutlineOutlinedIcon>    
+                                            <MailOutlineOutlinedIcon sx={{
+                                                                    marginRight: "20px",
+                                                                }}/>
+                                            <h3>CHAT</h3>      
                                         </ListItemButton>
                             </Link>
                         </ListItem>
