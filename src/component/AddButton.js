@@ -1,16 +1,19 @@
-import * as React from 'react';
 import '../App.scss';
-import AddReactionOutlinedIcon from '@mui/icons-material/AddReactionOutlined';
-import { Button, Dialog, DialogTitle, TextField } from '@mui/material';
+import * as React from 'react';
+// import AddReactionOutlinedIcon from '@mui/icons-material/AddReactionOutlined';
+// import { Button, Dialog, DialogTitle, TextField } from '@mui/material';
 import { useState} from 'react';
-import { useDispatch} from 'react-redux';
-import { addChat } from '../store/profile/actions';
+// import { useDispatch} from 'react-redux';
+// import { addChat } from '../store/profile/actions';
+import ButtonAddChatContainer from './ButtonAddChat/ButtonAddChatContainer';
+import DialogAddChatContainer from './DialogAddChat/DialogAddChatContainer'
 
-const AddButton = (props) => {
-    const [newChats, setNewChats] = useState('');
+const AddButton = () => {
+
+    // const [newChats, setNewChats] = useState('');
+    // const dispatch = useDispatch();
     const [visible, setVisible] = useState(false);
-    const dispatch = useDispatch();
-
+    
     const handeleOpen = () => {
         setVisible(true);
     }
@@ -19,26 +22,33 @@ const AddButton = (props) => {
         setVisible(false);
     }
 
-    const handleChange = (event) =>{
-        setNewChats(event.target.value);
-    }
+    // const addChats = () =>{
+    //     console.log(newChats);
+    //     dispatch( addChat(newChats) );
+    //     setNewChats('');
+    //     handeleClose();
+    // }
 
-    const addChats = () =>{
-        console.log(newChats);
-        dispatch( addChat(newChats) );
-        setNewChats('');
-        handeleClose();
-    }
+    // const handleChange = (event) =>{
+    //     setNewChats(event.target.value);
+    // }
 
     return(
     <React.Fragment>
-        <Button onClick={handeleOpen} className='newPerson'>
+
+        <ButtonAddChatContainer handleOpen = {handeleOpen}/>
+        <DialogAddChatContainer
+                                visible={visible}
+                                handleClose = {handeleClose}
+                                />
+        {/* <Button onClick={handeleOpen} className='newPerson' >
             <AddReactionOutlinedIcon sx={{
                                                 marginRight: "10px",
+                                                fontSize: "1rem",
                                         }} />
             <p>Add new chat</p>
-        </Button>
-        <Dialog sx={{borderRadius: "20px"}} open={ visible } onClose={ handeleClose }>
+        </Button> */}
+        {/* <Dialog sx={{borderRadius: "20px"}} open={ visible } onClose={ handeleClose }>
             <div className='addNewChatBox'>
                 <DialogTitle>Добавьте новый чат</DialogTitle>
                 <div className='addNewChat'>
@@ -50,7 +60,7 @@ const AddButton = (props) => {
                     </Button>
                 </div>
             </div>
-        </Dialog>
+        </Dialog> */}
     </React.Fragment>
     )
 }

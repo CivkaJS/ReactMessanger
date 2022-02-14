@@ -1,21 +1,29 @@
 import * as React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-// import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import ClearIcon from '@mui/icons-material/Clear';
+import { Button } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteChat } from '../store/profile/actions';
 
 
  function AlignItemsList(props) {
 
+  const dispatch = useDispatch();
+  const message = useSelector(state => state.profile.messageList);
+  const chat = useSelector(state => state.profile.chatList);
+
+  const  handleDelete = () => {
+    const id = chat[props.numKey].id;
+    delete message[id];
+
+    dispatch(deleteChat(props.numKey));
+    // dispatch({type: DELETE_MESSAGES});
+  }
+
   return (
-    // <div  style={{
-    //                 textDecoration: "none",
-    //                 width: '80%'
-    //               }}>
     <List sx={{ width: '100%', 
                 maxWidth: 360, 
                 bgcolor: 'background.paper', 
@@ -24,9 +32,10 @@ import ClearIcon from '@mui/icons-material/Clear';
                 }}
         style={{boxShadow: "10px 0px 10px 0px rgb(4 29 49 / 20%)",
                 marginTop: "5px",
-                height: "5vh",
+                minHeight: "6vh",
                 borderRadius: "5px 20px 5px",
-                backgroundColor: "lightgreen"
+                backgroundColor: "lightgreen",
+                display: "flex",
               }}
                 >
       <ListItem alignItems="flex-start" style={{paddingTop: "0px",
@@ -34,42 +43,29 @@ import ClearIcon from '@mui/icons-material/Clear';
                                                 display: 'flex',
                                                 alignItems: 'center'
                                                }}>
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp"
-                  //src="/static/images/avatar/1.jpg"
-                  src={props.addFoto} 
-                  sx={{
-                        marginTop: '0px',
-                      }} 
-                  />
-        </ListItemAvatar>
         <ListItemText
-                     style={{color: "black"}}
-                     primary= {props.addName}
-                     secondary={
-                                <React.Fragment>
-                                    <Typography
-                                        sx={{ display: 'inline' }}
-                                        component="span"
-                                        variant="body2"
-                                        color="text.primary"
-                                    >
-                                    {props.addStatus}
-                                    </Typography>
-                                </React.Fragment>
-                                }
+                     style={{
+                              color: "black",
+                            }}
+                     primary= {<Typography type="body2" style={{ fontSize: '12px' }}>
+                                            {props.addName}
+                                </Typography>}
         />
-        <button style={{
-        // <button onClick={props.handleDeleteChat} style={{
+        <Button onClick={handleDelete} style={{
                                                             border: 'none',
                                                             backgroundColor: 'inherit',
+                                                            minWidth: "0px"
                                                         }}>
-          <ClearIcon />
-        </button>
+          <ClearIcon sx={{
+                              width: '0.7em',
+                              height: '0.7em',
+                        }}/>
+        </Button>
       </ListItem>
     </List>
     
     // </div>
   );
 }
+
 export default AlignItemsList;

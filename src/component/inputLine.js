@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useState } from "react";
 import '../App.scss';
 import { TextField } from '@material-ui/core';
 import { Button } from '@mui/material';
 import SendTwoToneIcon from '@mui/icons-material/SendTwoTone';
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { addMessage } from '../store/profile/actions';
+// import inputLineMessageContainer from "./InputLineMessage/InputLineMessageContainer";
+// import { addMessage } from '../store/profile/actions';
+import { addMessageSaga } from "../store/profile/actions";
 
 const InputLine = () =>{
-// class InputLine extends React.Component{
+
      const [value, setValue] = useState('');
-     const message = useSelector(state => state.messageList);
-     const name = useSelector(state => state.name);
+     const name = useSelector(state => state.profile.name);
      const dispatch = useDispatch();
      const {chatId} = useParams();
      
@@ -21,27 +22,16 @@ const InputLine = () =>{
           console.log(value);
      }
 
-     const handleOnClick = () => {
+     const handleOnClick = useCallback(() => {
           add();
-     }
-
-     useEffect(()=>{
-          if(message[chatId]){
-               const addBot = message[chatId];
-               if(((addBot.length+1)%2) === 0) {
-                     dispatch( addMessage(chatId, {
-                         text: 'Bot answer ^-^',
-                         author: 'bot',
-                     }));
-                    }
-               }
-     },[message])
+     },[value, chatId, dispatch])
 
      const add = () =>{
-          dispatch( addMessage(chatId, {
+         value? dispatch ( addMessageSaga(chatId, {
                                              text: value,
                                              author: name,
-                                        }));
+                                             time: new Date().toLocaleTimeString(),
+                                        })) : setValue('');
           setValue('');
       }
 
@@ -60,6 +50,11 @@ const InputLine = () =>{
                         placeholder="Введите сообщение"
                    />
 
+                   {/* <inputLineMessageContainer
+                                             value={value}
+                                             setValue={setValue}
+                                                  /> */}
+
                    <Button
                         style ={{flexGrow: '1', marginRight: "10px", fontSize: "small", fontFamily: "cursive"}}
                         onClick={handleOnClick}
@@ -68,7 +63,7 @@ const InputLine = () =>{
                         startIcon ="output"
                    />
                 </div>
-              );
+              )
 }
 
 export default InputLine;

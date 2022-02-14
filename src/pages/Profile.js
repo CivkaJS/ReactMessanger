@@ -9,42 +9,24 @@ import SendTwoToneIcon from '@mui/icons-material/SendTwoTone';
 // import { toggleShowName } from '../store/profile/actions';
 
 const Profile = () => {
-    const {name, showName} =useSelector(state => state);
-    const [value, setValue] = useState(name);
+    let name = useSelector(state => state.profile.name);
+    const [value, setValue] = useState('');
+    const [,setActive] = useState(name);
     const dispatch = useDispatch();
-
-    // const {showName, name} = store.getState();
-    // const dispatch = store.dispatch;
-    // console.log(showName);
-    // console.log(name);
-
-    // const[updateName, setUpdateName] = useState();
-
-    // const setShowNeme = useCallback(() => {
-    //     dispatch(toggleShowName);
-    // },[dispatch])
 
     const handleChange = useCallback((event) =>{
         setValue(event.target.value);
     },[])
 
     const setName = useCallback(() =>{
+        setActive(value);
         dispatch({type: CHANGE_NAME, payload: value });
         setValue('');
     },[dispatch, value])
 
+
     return(
-        <Box sx={{
-            width: '100%',
-            height: '90vh',
-            margin: '0 auto',
-            backgroundColor: 'lightgoldenrodyellow',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            marginTop: '2%',
-            }}
-    >
+        <Box className='PageBox'>
 
         <div className='profileBox'>
             <h2>Profile</h2>
@@ -59,7 +41,7 @@ const Profile = () => {
                         autoFocus={true}
                         placeholder="Введите имя профиля"
                    />
-                {showName && <div>{`Ваше имя профиля: ${name}`}</div>}
+                <div>{`Ваше имя профиля: ${name}`}</div>
             <Button
                         style ={{fontFamily: "cursive"}}
                         onClick={setName}
