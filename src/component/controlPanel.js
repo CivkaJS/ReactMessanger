@@ -36,6 +36,7 @@ const ControlPanel = () => {
                                                         borderRadius: "20px 5px 5px 5px",
                                                         margin: "0 1vh",
                                                         backgroundColor: 'beige',
+                                                        fontSize: "12px",
                                                         '&:active': {
                                                             backgroundColor: 'lightgreen',
                                                         },
@@ -57,6 +58,7 @@ const ControlPanel = () => {
                                                             border: "solid 1px firebrick",
                                                             borderRadius: "5px 5px 5px 5px",
                                                             backgroundColor: 'beige',
+                                                            fontSize: "12px",
                                                             '&:active': {
                                                                 backgroundColor: 'lightgreen',
                                                             },
@@ -79,6 +81,7 @@ const ControlPanel = () => {
                                                             borderRadius: "5px 20px 5px 5px",
                                                             margin: "0 1vh",
                                                             backgroundColor: 'beige',
+                                                            fontSize: "12px",
                                                             '&:active': {
                                                                 backgroundColor: 'lightgreen',
                                                                 }

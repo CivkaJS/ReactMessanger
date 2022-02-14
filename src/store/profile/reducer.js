@@ -1,4 +1,4 @@
-import { ADD_MESSAGES, CHANGE_NAME } from "./actions";
+import { ADD_MESSAGES, CHANGE_NAME, DELETE_CHAT } from "./actions";
 import { ADD_CHAT } from "./actions";
 
 const initialStateExs = {
@@ -20,8 +20,8 @@ const initialStateExs = {
 
   const profileReducer = (state = initialStateExs, action) => {
     switch (action.type) {
+
       case CHANGE_NAME:{
-          console.log(action);
         
         return {
           ...state,
@@ -31,11 +31,16 @@ const initialStateExs = {
       }
 
       case ADD_CHAT:{
-          console.log(action);
+
+          // const addNew = [{
+          //                   id: `id${state.chatList.length}`,
+          //                   name: action.name,
+          //               }]
         
         return {
           ...state,
           chatList: [
+            // ...addNew,
             ...state.chatList,
             {
               id: `id${state.chatList.length}`,
@@ -46,24 +51,43 @@ const initialStateExs = {
       }
 
       case ADD_MESSAGES:{
-        console.log(action);
         const currentList = state.messageList[action.chatId] || [];
-        
+ 
         return {
           ...state,
           messageList: {
             ...state.messageList,
             [action.chatId]: [
-              ...currentList,
               {
                 ...action.message,
                 id: `${action.chatId}${currentList.length}`,
               },
+              ...currentList,
             ],
           },
         };
       }
 
+      case DELETE_CHAT:{
+      
+        return {
+          ...state,
+          chatList: [
+            ...state.chatList.slice(0, action.payload),
+            ...state.chatList.slice(action.payload + 1)
+          ],
+        };
+      }
+
+      // case DELETE_MESSAGES:{
+      
+      //   return {
+      //     ...state,
+      //     messageList: {
+      //         ...state.messageList,
+      //     },
+      //   };
+      // };
       default:
           return state
     }

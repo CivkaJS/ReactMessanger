@@ -8,17 +8,7 @@ const NoChats = (props) => {
     let {chatId} = useParams();
 
     return(
-        <Box sx={{
-            width: '100%',
-            height: '90vh',
-            margin: '0 auto',
-            backgroundColor: 'lightgoldenrodyellow',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            marginTop: '2%',
-            }}
-    >
+      <Box className='PageBox' >
         <div className="messagePage">
               <div className='listPage'>
                 <AddButton />
@@ -29,7 +19,7 @@ const NoChats = (props) => {
                 <div>Чат не существует</div>
               </div>
             </div> 
-    </Box>
+      </Box>
     )
 }
 

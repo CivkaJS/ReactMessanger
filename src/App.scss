@@ -42,6 +42,7 @@
   margin-bottom: 1vh;
   overflow: auto;
   height: 74vh;
+  width: 10vh;
 }
 
 .boxList{
@@ -103,16 +104,26 @@
   color: #61dafb;
 }
 
+.PageBox{
+  width: 100%;
+  height: 90vh;
+  margin: 0 auto;
+  background-color: lightgoldenrodyellow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2%;
+}
+
 .Message-box{
-  flex-grow: 4;
+  flex-grow: 6;
   margin-right: 3%;
-  height: 96%;
+  height: 72vh;
   box-shadow: inset 0 0 20px grey;
   padding: 3vh;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-direction: column-reverse;
   overflow-y: auto;
   border-radius: 15px;  
 }
@@ -137,21 +148,22 @@
 }
 
 .Message{
-  padding: 5px;
+  padding: 5px 20px;
   background-color: green;
   color: antiquewhite;
   display: inline-block;
   border-radius: 10px;
-  font-size: 23px;
+  font-size: 12px;
   font-family: cursive;
   width: fit-content;
 }
 
 .Message-autor{
-  color: black;
-  font-size: 15px;
+  font-size: 8px;
   font-family: cursive;
   width: fit-content;
+  color: coral;
+  margin: 3px;
 }
 
 .me-place{
@@ -184,8 +196,8 @@
   align-items: center;
   flex-direction: column;
   border-radius: 20px;
+  margin-bottom: 15px;
   width: 50vh;
-  height: 22vh;
 }
 
 .Input-box{

@@ -8,18 +8,18 @@ import { useCallback } from 'react';
 const MessageBox = (props) => {
 
     // const profileName = useSelector(state => state.name);
-    const message =useSelector(state => state.messageList)
-    let {chatId} = useParams();
+    const message =useSelector(state => state.profile.messageList)
+    const {chatId} = useParams();
     const getMessagesById = message[chatId]
-  
-    console.log({getMessagesById});
 
     const renderMessage = useCallback( (message, index)=>{
+
       return(
                 <div key={index} style={{width: '100%'}}>
                         <MessageInChat 
                             outputText = {message.text} 
-                            outputAutor = {message.author} 
+                            outputAutor = {message.author}
+                            outputTime = {message.time}
                         />
                     </div>
             )
