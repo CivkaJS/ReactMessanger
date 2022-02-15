@@ -3,7 +3,8 @@
   padding: 0;
 }
 
-#root{
+#root {
+  min-width: 768px;
   max-width: 100vh;
   margin: 0 auto;
   text-align: center;
@@ -36,7 +37,7 @@
   margin-top: 14px;
 }
 
-.listPage{
+.listPage {
   flex-grow: 1;
   margin: 0 1vh;
   margin-bottom: 1vh;
@@ -45,7 +46,7 @@
   width: 10vh;
 }
 
-.boxList{
+.boxList {
   height: 67vh;
   overflow: auto;
   margin-top: 20px;
@@ -55,26 +56,26 @@
   width: 0;
 }
 
-.person{
+.person {
   display: flex;
   text-decoration: none;
 }
 
-.personChat{
+.personChat {
   width: 80%;
 }
 
-.activPerson{
+.activPerson {
   justify-content: end;
   margin-bottom: 1vh;
 }
 
-.activeShadow{
-  box-shadow:-10px 10px 10px 0px;
+.activeShadow {
+  box-shadow: -10px 10px 10px 0px;
   // rgb(4 29 49 / 20%)
 }
 
-.newPerson{
+.newPerson {
   color: lightcoral;
   width: 100%;
   height: 35px;
@@ -87,15 +88,15 @@
   border: none;
 }
 
-.newPerson:hover{
+.newPerson:hover {
   color: red;
 }
 
-.newPerson:active{
+.newPerson:active {
   color: lightcoral;
 }
 
-.messagePage{
+.messagePage {
   display: flex;
   width: 100%;
 }
@@ -104,7 +105,7 @@
   color: #61dafb;
 }
 
-.PageBox{
+.PageBox {
   width: 100%;
   height: 90vh;
   margin: 0 auto;
@@ -115,7 +116,7 @@
   margin-top: 2%;
 }
 
-.Message-box{
+.Message-box {
   flex-grow: 6;
   margin-right: 3%;
   height: 72vh;
@@ -125,10 +126,10 @@
   display: flex;
   flex-direction: column-reverse;
   overflow-y: auto;
-  border-radius: 15px;  
+  border-radius: 15px;
 }
 
-.profileBox{
+.profileBox {
   height: 30vh;
   display: flex;
   flex-direction: column;
@@ -137,7 +138,7 @@
   margin-top: 15vh;
 }
 
-.noneMessageBox{
+.noneMessageBox {
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -147,7 +148,7 @@
   width: 0;
 }
 
-.Message{
+.Message {
   padding: 5px 20px;
   background-color: green;
   color: antiquewhite;
@@ -158,7 +159,7 @@
   width: fit-content;
 }
 
-.Message-autor{
+.Message-autor {
   font-size: 8px;
   font-family: cursive;
   width: fit-content;
@@ -166,32 +167,32 @@
   margin: 3px;
 }
 
-.me-place{
+.me-place {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
-.bot-place{
+.bot-place {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.chatForm{
+.chatForm {
   display: flex;
 }
 
-.addNewChat{
+.addNewChat {
   display: flex;
   flex-direction: column;
   margin-top: 5%;
   width: 90%;
 }
 
-.addNewChatBox{
+.addNewChatBox {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -200,28 +201,28 @@
   width: 50vh;
 }
 
-.Input-box{
-    display: flex;
-    align-items: center;
-    min-height: 120px;
-    margin: 0px 25px;
-    width: 92%;   
+.Input-box {
+  display: flex;
+  align-items: center;
+  min-height: 120px;
+  margin: 0px 25px;
+  width: 92%;
 }
 
-.input-text{
-    font-size: 15px;
-    font-family: sans-serif;
-    border-radius: 10px;
-    resize: none;
-    padding: 10px;
-    overflow: hidden;
-    box-sizing: border-box;
-    height: 40px;
-    min-height: 40px;
-    width: 80%;
+.input-text {
+  font-size: 15px;
+  font-family: sans-serif;
+  border-radius: 10px;
+  resize: none;
+  padding: 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+  height: 40px;
+  min-height: 40px;
+  width: 80%;
 }
 
-.submit-text{
+.submit-text {
   background-color: yellowgreen;
   width: 150px;
   height: 30px;

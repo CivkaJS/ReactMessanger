@@ -1,9 +1,12 @@
 import ButtonAddChat from "./ButtonAddChat";
 
 const ButtonAddChatContainer = (props) => {
+
+  const { handleOpen } = props;
+
   return (
     <ButtonAddChat
-      handleOpen = {props.handleOpen}
+      handleOpen = {handleOpen}
     />
   );
 };

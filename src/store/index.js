@@ -1,8 +1,9 @@
 import profileReducer from "./profile/reducer";
+import gistsReduser from "./Gists/reducer";
 import { applyMiddleware, combineReducers, createStore} from 'redux';
 // import { middleware } from "./middleware";
 import { compose } from "redux";
-// import thunk from "redux-thunk";
+import thunk from "redux-thunk";
 import createSagaMiddleware from "@redux-saga/core";
 import MySaga from "./sagas";
 import storage from "redux-persist/lib/storage";
@@ -19,11 +20,12 @@ const persistConfig = {
 
 const allReduser = combineReducers({
     profile: profileReducer,
+    gists: gistsReduser,
 })
 
 const persistedReducer = persistReducer(persistConfig, allReduser);
 
-export const store = createStore(persistedReducer, composeEnhancers(applyMiddleware(sagaMiddleware)));
+export const store = createStore(persistedReducer, composeEnhancers(applyMiddleware(sagaMiddleware, thunk)));
 
 sagaMiddleware.run(MySaga);
 
