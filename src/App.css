@@ -4,6 +4,7 @@
 }
 
 #root {
+  min-width: 768px;
   max-width: 100vh;
   margin: 0 auto;
   text-align: center;

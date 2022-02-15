@@ -7,6 +7,7 @@ import { ListItemButton } from '@mui/material';
 import CottageOutlinedIcon from '@mui/icons-material/CottageOutlined';
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import AddReactionOutlinedIcon from '@mui/icons-material/AddReactionOutlined';
+import LanIcon from '@mui/icons-material/Lan';
 import { Link } from "react-router-dom";
 
 
@@ -78,7 +79,7 @@ const ControlPanel = () => {
                                         to="/chats">
                                         <ListItemButton sx={{
                                                             border: "solid 1px firebrick",
-                                                            borderRadius: "5px 20px 5px 5px",
+                                                            borderRadius: "5px 5px 5px 5px",
                                                             margin: "0 1vh",
                                                             backgroundColor: 'beige',
                                                             fontSize: "12px",
@@ -90,6 +91,29 @@ const ControlPanel = () => {
                                                                     marginRight: "20px",
                                                                 }}/>
                                             <h3>CHAT</h3>      
+                                        </ListItemButton>
+                            </Link>
+                        </ListItem>
+                        <ListItem>
+                            <Link style={{
+                                        width: '100%',
+                                        textDecoration: "none",
+                                        }} 
+                                        to="/gists">
+                                        <ListItemButton sx={{
+                                                            border: "solid 1px firebrick",
+                                                            borderRadius: "5px 20px 5px 5px",
+                                                            margin: "0 1vh",
+                                                            backgroundColor: 'beige',
+                                                            fontSize: "12px",
+                                                            '&:active': {
+                                                                backgroundColor: 'lightgreen',
+                                                                }
+                                                            }}>
+                                            <LanIcon sx={{
+                                                            marginRight: "20px",
+                                                        }}/>
+                                            <h3>GISTs</h3>      
                                         </ListItemButton>
                             </Link>
                         </ListItem>

@@ -9,6 +9,7 @@ import Chats from './Chat';
 import Profile from './Profile';
 import ControlPanel from '../component/controlPanel';
 import NoChats from './NoChats';
+import Gists from './Gists'
 // import { create } from '@mui/material/styles/createTransitions';
 
 export const MyHandler = React.createContext();
@@ -22,6 +23,7 @@ export const MyHandler = React.createContext();
         <Route path="/" element={<Home/>}/>
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/chats/:chatId" element={<Chats/>}/>
+        <Route path="/gists" element={<Gists/>}/>
         <Route path="*" element={<NoChats/>}/>
       </Routes> 
       </MyHandler.Provider>
