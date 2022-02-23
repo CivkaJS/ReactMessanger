@@ -20,14 +20,14 @@ const SignUp = () => {
 
     useEffect(() => {
         setInfo(false);
-      }, [])
+    }, [])
 
     const handeleSubmit = async (event) => {
         event.preventDefault();
 
         try {
             const auth = getAuth(firebase);
-            await createUserWithEmailAndPassword(auth, email, password).then(()=>{
+            await createUserWithEmailAndPassword(auth, email, password).then(() => {
                 setInfo(true);
             });
             navigate(from, { replace: true });
@@ -81,7 +81,7 @@ const SignUp = () => {
                             },
                         }} > Login </Link>
                         {error && <Error>Error</Error>}
-                        {info && <h3>Регистрация успешно завершена</h3>}
+                        {info && alert(`${email} успешно зарегистрирован`)}
                         <Button onClick={handeleSubmit} type='submit' sx={{
                             backgroundColor: "chocolate",
                             color: "azure",
