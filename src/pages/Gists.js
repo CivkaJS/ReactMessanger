@@ -5,7 +5,6 @@ import { Button, CircularProgress } from "@mui/material";
 import { getAllGist } from "../store/middleware"
 import { useDispatch, useSelector } from "react-redux";
 import { SelectGists, selectGistsError, selectGistsLoading } from "../store/Gists/selector";
-import { hover } from "@testing-library/user-event/dist/hover";
 
 const GistsList = () => {
 
@@ -13,6 +12,7 @@ const GistsList = () => {
     const error = useSelector(selectGistsError);
     const loading = useSelector(selectGistsLoading);
     const dispatch = useDispatch();
+
 
     // const requestGists = useCallback(() => {
     //     setLoading(true);
@@ -35,11 +35,11 @@ const GistsList = () => {
 
     const requestGists = useCallback(() => {
         dispatch(getAllGist());
-    })
+    },[])
 
     useEffect(() => {
-        requestGists();
-    }, [])
+        requestGists(); 
+    },[])
 
     const renderGists = useCallback((gist) => (
         <li key={gist.id}>{gist.description || 'No description'}</li>

@@ -4,8 +4,9 @@
 }
 
 #root {
-  min-width: 768px;
-  max-width: 100vh;
+  min-width: 900px;
+  max-width: 100%;
+  height: 100%;
   margin: 0 auto;
   text-align: center;
   // border: solid 1px black;
@@ -27,6 +28,27 @@
   }
 }
 
+.boxHomeNavigationLink {
+  width: 60%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.linkHomeNavigation {
+  text-decoration: none;
+  font-family: serif;
+  font-size: 20px;
+  transition: 1s;
+}
+
+.linkHomeNavigation:hover {
+  color: brown;
+  transform: translateY(-5px);
+  transition: 1s;
+}
+
 .App-header {
   height: 92vh;
   display: flex;
@@ -35,6 +57,30 @@
   font-size: calc(10px + 2vmin);
   color: white;
   margin-top: 14px;
+}
+
+.loginBox {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: inherit;
+  font-family: cursive;
+}
+
+.loginInputBox {
+  display: flex;
+  flex-direction: column;
+  height: 25vh;
+  width: 40vh;
+  justify-content: space-between;
+  
+  padding: 30px;
+}
+
+.MuiPaper-root{
+  background-color: initial;
 }
 
 .listPage {
@@ -54,6 +100,34 @@
 
 .boxList::-webkit-scrollbar {
   width: 0;
+}
+
+.boxNewChat {
+  width: 100%;
+  max-width: 360;
+  padding-top: 0;
+  padding-bottom: 0;
+  box-shadow: 10px 0px 10px 0px rgba(0, 0, 255, 0.2);
+  margin-top: 5px;
+  min-height: 6vh;
+  border-radius: 5px 20px 5px;
+  background-color: lightgreen;
+  display: flex;
+}
+
+.boxLoginSubmit{
+  display: flex;
+  flex-direction: column;
+  height: 10vh;
+  justify-content: space-evenly;
+}
+
+.boxContentNewChat {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  display: flex;
+  align-items: flex-start;
+  align-items: center;
 }
 
 .person {
@@ -114,6 +188,11 @@
   flex-direction: column;
   align-items: center;
   margin-top: 2%;
+  overflow-y: auto;
+}
+
+.boxList::-webkit-scrollbar {
+  width: 0;
 }
 
 .Message-box {
@@ -154,7 +233,7 @@
   color: antiquewhite;
   display: inline-block;
   border-radius: 10px;
-  font-size: 12px;
+  font-size: 16px;
   font-family: cursive;
   width: fit-content;
 }

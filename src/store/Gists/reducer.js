@@ -17,30 +17,25 @@ const initialState = {
 const gistsReduser = (state = initialState, action) => {
     switch (action.type) {
         case GET_GISTS_REQUEST:
-            console.log("GET_GISTS_REQUEST")
             return {
                 ...state,
                 request: STATUSES.REQUEST,
             };
         case GET_GISTS_SUCCESS:
-            console.log("GET_GISTS_SUCCESS")
             return {
                 ...state,
                 gists: action.payload,
                 request: STATUSES.SUCCESS,
             };
         case GET_GISTS_FAILURE:
-            console.log("GET_GISTS_FAILURE")
             return {
                 ...state,
                 request: STATUSES.FAILURE,
                 error: action.payload,
             };
         case SET_GISTS_LOADING:
-            console.log("SET_GISTS_LOADING")
             return {
                 ...state,
-                request: action.status,
                 loading: action.progress,
             };
         default:

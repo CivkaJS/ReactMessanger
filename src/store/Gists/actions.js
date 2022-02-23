@@ -12,14 +12,12 @@ export const getGistsSuccess = (data) => ({
   payload: data,
 });
 
-export const getGistsFailure = (err, counter) => ({
+export const getGistsFailure = (err) => ({
   type: GET_GISTS_FAILURE,
   payload: err,
-  counter,
 });
 
-export const setGistsLoading = (progress, status) => ({
+export const setGistsLoading = (progress) => ({
   type: SET_GISTS_LOADING,
   progress, 
-  status,
 });

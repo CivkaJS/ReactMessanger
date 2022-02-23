@@ -4,8 +4,9 @@
 }
 
 #root {
-  min-width: 768px;
-  max-width: 100vh;
+  min-width: 900px;
+  max-width: 100%;
+  height: 100%;
   margin: 0 auto;
   text-align: center;
   background-color: lightgoldenrodyellow;
@@ -27,6 +28,35 @@
   }
 }
 
+.boxHomeNavigationLink {
+  width: 60%;
+  height: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.linkHomeNavigation {
+  text-decoration: none;
+  font-family: serif;
+  font-size: 20px;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.linkHomeNavigation:hover {
+  color: brown;
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
 .App-header {
   height: 92vh;
   display: -webkit-box;
@@ -42,6 +72,45 @@
   font-size: calc(10px + 2vmin);
   color: white;
   margin-top: 14px;
+}
+
+.loginBox {
+  height: 50vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: inherit;
+  font-family: cursive;
+}
+
+.loginInputBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 25vh;
+  width: 40vh;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 30px;
+}
+
+.MuiPaper-root {
+  background-color: initial;
 }
 
 .listPage {
@@ -63,6 +132,50 @@
 
 .boxList::-webkit-scrollbar {
   width: 0;
+}
+
+.boxNewChat {
+  width: 100%;
+  max-width: 360;
+  padding-top: 0;
+  padding-bottom: 0;
+  -webkit-box-shadow: 10px 0px 10px 0px rgba(0, 0, 255, 0.2);
+          box-shadow: 10px 0px 10px 0px rgba(0, 0, 255, 0.2);
+  margin-top: 5px;
+  min-height: 6vh;
+  border-radius: 5px 20px 5px;
+  background-color: lightgreen;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.boxLoginSubmit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 10vh;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.boxContentNewChat {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .person {
@@ -141,6 +254,11 @@
       -ms-flex-align: center;
           align-items: center;
   margin-top: 2%;
+  overflow-y: auto;
+}
+
+.boxList::-webkit-scrollbar {
+  width: 0;
 }
 
 .Message-box {
@@ -204,7 +322,7 @@
   color: antiquewhite;
   display: inline-block;
   border-radius: 10px;
-  font-size: 12px;
+  font-size: 16px;
   font-family: cursive;
   width: -webkit-fit-content;
   width: -moz-fit-content;
