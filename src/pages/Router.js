@@ -8,7 +8,7 @@ import Profile from './Profile';
 import ControlPanel from '../component/controlPanel';
 import NoChats from './NoChats';
 import Gists from './Gists'
-import SingUp from './SingUp';
+import SignUp from './SignUp';
 import Login from './Login';
 
 // import { create } from '@mui/material/styles/createTransitions';
@@ -23,7 +23,7 @@ const Router = () => {
           <Route path="/" exact element={<Home />} />
           <Route path="/" element={<Home />} />
 
-          <Route path="/singup" exact element={<SingUp />} />
+          <Route path="/signup" exact element={<SignUp />} />
           <Route path="/login" exact element={<Login />} />
 
           <Route element={<RequiredAuth />}>
