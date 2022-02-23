@@ -4,11 +4,10 @@ import './index.css';
 // import App from './App';
 import Router from './pages/Router'
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store, persistor } from './store';
-import { PersistGate } from "redux-persist/integration/react";
-import { CircularProgress } from '@mui/material';
+import { store } from './store';
+import { AuthProvider } from './Hook/useAuth';
 
 export const MyThemeContext = React.createContext();
 
@@ -18,15 +17,18 @@ export const MyThemeContext = React.createContext();
 
 ReactDOM.render(
   <React.StrictMode>
+
     <Provider store={store}>
-      <PersistGate persistor={persistor} loading={<CircularProgress />}>
-      {/* <MyThemeContext.Provider value={{ theme: 'dark' }}> */}
-      {/* <MyThemeContext.Provider value={handleDeleteChat}> */}
+      <AuthProvider>
+        {/* <PersistGate persistor={persistor} loading={<CircularProgress />}> */}
+        {/* <MyThemeContext.Provider value={{ theme: 'dark' }}> */}
+        {/* <MyThemeContext.Provider value={handleDeleteChat}> */}
         <BrowserRouter>
-          <Router/>
+          <Router />
         </BrowserRouter>
-      {/* </MyThemeContext.Provider> */}
-      </PersistGate>
+        {/* </MyThemeContext.Provider> */}
+        {/* </PersistGate> */}
+      </AuthProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

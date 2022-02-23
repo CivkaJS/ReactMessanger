@@ -1,22 +1,17 @@
-import { ADD_MESSAGES, CHANGE_NAME, DELETE_CHAT } from "./actions";
-import { ADD_CHAT } from "./actions";
+import { CHANGE_NAME, DELETE_CHAT } from "./actions";
+import { INPUT_DB_CHAT, DELETE_DB_CHAT, INPUT_DB_MESSAGE, DELETE_DB_MESSAGE, CHANGE_MESSAGES } from "./actions";
 
 const initialStateExs = {
     showName: true,
     name: 'Lindsy',
+    chatUpdateInput: true,
+    chatUpdateDelete: true,
+    messageUpdateInput: true,
+    messageUpdateDelete: true,
+    messages: {},
     chatList: [],
-    messageList: {}
+    messageList:{}
   }
-
-  // const chatReduser = (state = initialState, action) => {
-  //   switch(action.type){
-  //     case ADD_CHAT:{
-  //       console.log(action);
-  //     }
-  //     default: 
-  //       return state
-  //   }
-  // }
 
   const profileReducer = (state = initialStateExs, action) => {
     switch (action.type) {
@@ -30,43 +25,78 @@ const initialStateExs = {
         }
       }
 
-      case ADD_CHAT:{
+      case INPUT_DB_CHAT:{
 
-          // const addNew = [{
-          //                   id: `id${state.chatList.length}`,
-          //                   name: action.name,
-          //               }]
-        
-        return {
+        return{
           ...state,
-          chatList: [
-            // ...addNew,
-            ...state.chatList,
-            {
-              id: `id${state.chatList.length}`,
-              name: action.name,
-            },
-          ]
+          chatUpdateInput: action.payload
         }
       }
 
-      case ADD_MESSAGES:{
-        const currentList = state.messageList[action.chatId] || [];
- 
+      case DELETE_DB_CHAT:{
+
+        return{
+          ...state,
+          chatUpdateDelete: action.payload
+        }
+      }
+
+      case INPUT_DB_MESSAGE:{
+        return{
+          ...state,
+          messageUpdateInput: action.payload
+        }
+      }
+
+      case DELETE_DB_MESSAGE:{
+        return{
+          ...state,
+          messageUpdateDelete: action.payload
+        }
+      }
+
+      case CHANGE_MESSAGES: {
         return {
           ...state,
-          messageList: {
-            ...state.messageList,
-            [action.chatId]: [
-              {
-                ...action.message,
-                id: `${action.chatId}${currentList.length}`,
-              },
-              ...currentList,
-            ],
+          messages: {
+            ...state.messages,
+            [action.payload.chatId]: action.payload.messages,
           },
         };
       }
+
+      // case ADD_CHAT:{
+        
+      //   return {
+      //     ...state,
+      //     chatUpdate: action.update,
+      //     chatList: [
+      //       ...state.chatList,
+      //       {
+      //         id: `id${state.chatList.length}`,
+      //         name: action.name,
+      //       },
+      //     ]
+      //   }
+      // }
+
+      // case ADD_MESSAGES:{
+      //   const currentList = state.messageList[action.chatId] || [];
+ 
+      //   return {
+      //     ...state,
+      //     messageList: {
+      //       ...state.messageList,
+      //       [action.chatId]: [
+      //         {
+      //           ...action.message,
+      //           id: `${action.chatId}${currentList.length}`,
+      //         },
+      //         ...currentList,
+      //       ],
+      //     },
+      //   };
+      // }
 
       case DELETE_CHAT:{
       
@@ -79,15 +109,6 @@ const initialStateExs = {
         };
       }
 
-      // case DELETE_MESSAGES:{
-      
-      //   return {
-      //     ...state,
-      //     messageList: {
-      //         ...state.messageList,
-      //     },
-      //   };
-      // };
       default:
           return state
     }

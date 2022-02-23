@@ -1,32 +1,46 @@
 import DialogAddChat from "./DialogAddChat";
-import { addChat } from '../../store/profile/actions';
+import { INPUT_DB_CHAT } from '../../store/profile/actions';
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { getDatabase, ref, set, push } from "firebase/database";
+import firebase from "../../service/firebase";
 
 const DialogAddChatContainer = (props) => {
- 
-    const [newChats, setNewChats] = useState('');
-    const dispatch = useDispatch();
 
-    const handleChange = (event) =>{
-        setNewChats(event.target.value);
-    }
+  const { visible, handeleClose } = props;
+  const [newChats, setNewChats] = useState('');
+  const [updateChat, setUpdateChat] = useState(false);
+  const dispatch = useDispatch();
 
-    const addChats = () =>{
-        console.log(newChats);
-        dispatch( addChat(newChats) );
-        setNewChats('');
-        props.handleClose();
-    }
+  const handeleChange = (event) => {
+    setNewChats(event.target.value);
+  }
 
-    return (
+  // useEffect(() => {
+  //   addChats();
+  // }, [])
+
+  const addChats = async () => {
+    const db = getDatabase(firebase);
+    const chatRef = ref(db, '/chats' );
+    const newChatRef = push(chatRef);
+
+    await set(newChatRef, {name: newChats}).then(()=>{
+      updateChat? setUpdateChat(false) : setUpdateChat(true);
+      dispatch({type: INPUT_DB_CHAT, payload: updateChat });
+    });
+
+    setNewChats('');
+    handeleClose();
+  }
+
+  return (
     <DialogAddChat
       newChats={newChats}
-      visible={props.visible}
+      visible={visible}
       addChats={addChats}
-      handeleClose={props.handeleClose} 
-      handleOpen={props.handleOpen}
-      handleChange={handleChange}
+      handeleClose={handeleClose}
+      handeleChange={handeleChange}
     />
   );
 };

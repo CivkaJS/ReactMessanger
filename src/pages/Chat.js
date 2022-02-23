@@ -1,6 +1,3 @@
-// import { useState } from "react";
-// import { useParams } from "react-router-dom";
-// import NoChats from "../component/NoChats";
 import Messager from "../component/MesssagePage";
 import React from "react";
 import { useParams } from "react-router-dom";
@@ -9,15 +6,13 @@ import { Box } from "@mui/material";
 
 const Chats = () => {
 
-    let {chatId} = useParams();
-
-    return chatId? (
-
+    let { chatId } = useParams();
+    
+    return chatId ? (
         <Box className='PageBox'>
-            <Messager/>
+            <Messager />
         </Box>
-
-    ): <NoChats/> 
+    ) : <NoChats />
 }
 
 export default Chats;

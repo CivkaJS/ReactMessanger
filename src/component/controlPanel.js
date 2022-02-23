@@ -1,125 +1,100 @@
 import * as React from 'react';
 import '../App.scss';
-import Box from '@mui/material/Box';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import { ListItemButton } from '@mui/material';
+import { Box } from '@mui/material';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import CottageOutlinedIcon from '@mui/icons-material/CottageOutlined';
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import AddReactionOutlinedIcon from '@mui/icons-material/AddReactionOutlined';
+import ButtonControlPanelContainer from './ButtonControlPanel/ButtonControlPanelConteiner';
+import { useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import LanIcon from '@mui/icons-material/Lan';
 import { Link } from "react-router-dom";
-
+import useAuth from "../Hook/useAuth";
 
 const ControlPanel = () => {
-    return(
-            <Box
-                sx={{
-                    maxWidth: '100vh',
-                    // height: '95vh',
-                    margin: '0 auto',
-                    backgroundColor: 'goldenrod',
-                    // '&:hover': {
-                    //   backgroundColor: 'lightgoldenrodyellow',
-                    //   opacity: [0.9, 0.8, 0.7],
-                    // },
-                    }}
-                    >
-                    <List sx={{display: 'flex'}}>
-                        <ListItem>
-                            <Link style={{
-                                     width: '100%',
-                                     textDecoration: "none",
-                                    }} 
-                                    to={"/"}>
-                                    <ListItemButton sx={{
-                                                        border: "solid 1px firebrick",
-                                                        borderRadius: "20px 5px 5px 5px",
-                                                        margin: "0 1vh",
-                                                        backgroundColor: 'beige',
-                                                        fontSize: "12px",
-                                                        '&:active': {
-                                                            backgroundColor: 'lightgreen',
-                                                        },
-                                                       }}>
-                                        <CottageOutlinedIcon sx={{
-                                                                    marginRight: "20px",
-                                                                }}/>
-                                        <h3>HOME</h3>                         
-                                    </ListItemButton> 
-                            </Link>    
-                        </ListItem>
-                        <ListItem>
-                            <Link style={{
-                                        width: '100%',
-                                        textDecoration: "none",
-                                        }} 
-                                        to="/profile">
-                                        <ListItemButton sx={{
-                                                            border: "solid 1px firebrick",
-                                                            borderRadius: "5px 5px 5px 5px",
-                                                            backgroundColor: 'beige',
-                                                            fontSize: "12px",
-                                                            '&:active': {
-                                                                backgroundColor: 'lightgreen',
-                                                            },
-                                                            }}>
-                                            <AddReactionOutlinedIcon sx={{
-                                                                    marginRight: "20px",
-                                                                }} />
-                                            <h3>PROFILE</h3>  
-                                        </ListItemButton>
-                            </Link>
-                        </ListItem>
-                        <ListItem>
-                            <Link style={{
-                                        width: '100%',
-                                        textDecoration: "none",
-                                        }} 
-                                        to="/chats">
-                                        <ListItemButton sx={{
-                                                            border: "solid 1px firebrick",
-                                                            borderRadius: "5px 5px 5px 5px",
-                                                            margin: "0 1vh",
-                                                            backgroundColor: 'beige',
-                                                            fontSize: "12px",
-                                                            '&:active': {
-                                                                backgroundColor: 'lightgreen',
-                                                                }
-                                                            }}>
-                                            <MailOutlineOutlinedIcon sx={{
-                                                                    marginRight: "20px",
-                                                                }}/>
-                                            <h3>CHAT</h3>      
-                                        </ListItemButton>
-                            </Link>
-                        </ListItem>
-                        <ListItem>
-                            <Link style={{
-                                        width: '100%',
-                                        textDecoration: "none",
-                                        }} 
-                                        to="/gists">
-                                        <ListItemButton sx={{
-                                                            border: "solid 1px firebrick",
-                                                            borderRadius: "5px 20px 5px 5px",
-                                                            margin: "0 1vh",
-                                                            backgroundColor: 'beige',
-                                                            fontSize: "12px",
-                                                            '&:active': {
-                                                                backgroundColor: 'lightgreen',
-                                                                }
-                                                            }}>
-                                            <LanIcon sx={{
-                                                            marginRight: "20px",
-                                                        }}/>
-                                            <h3>GISTs</h3>      
-                                        </ListItemButton>
-                            </Link>
-                        </ListItem>
-                    </List>
-            </Box> 
-        )
-}
 
+    const auth = useAuth();
+    const location = useLocation;
+    const navigate = useNavigate();
+    const spaceIcon = '15px';
+
+    let from = location.state?.from?.pathname || '/'; //Если не определено где мы находимся преходим по указанию за 'ИЛИ'?
+
+
+    const handlerOnClick = async (event) => {
+
+        event.preventDefault();
+
+        await auth.signout(
+            () => {
+                navigate(from, { replace: true })
+            }
+        )
+    }
+
+    return (
+        <Box
+            sx={{
+                maxWidth: '100%',
+                margin: '0 auto',
+                backgroundColor: 'goldenrod',
+                display: "flex",
+                justifyContent: "space-around",
+            }}
+        >
+
+            <Link style={{ textDecoration: "none", }} to='/'>
+                <ButtonControlPanelContainer
+                    inputIcon={<CottageOutlinedIcon sx={{ marginRight: `${spaceIcon}` }} />}
+                    nameButton={'HOMe'}
+                    position={'first'}
+                />
+            </Link>
+
+            <Link style={{ textDecoration: "none", }} to='/profile'>
+                <ButtonControlPanelContainer
+                    inputIcon={<AddReactionOutlinedIcon sx={{ marginRight: `${spaceIcon}` }} />}
+                    nameButton={'PROFILe'}
+                    position={'center'}
+                />
+            </Link>
+
+            <Link style={{ textDecoration: "none", }} to='/chats'>
+                <ButtonControlPanelContainer
+                    inputIcon={<MailOutlineOutlinedIcon sx={{ marginRight: `${spaceIcon}` }} />}
+                    nameButton={'CHAt'}
+                    position={'center'}
+                />
+            </Link>
+
+            <Link style={{ textDecoration: "none", }} to='/gists'>
+                <ButtonControlPanelContainer
+                    inputIcon={<LanIcon sx={{ marginRight: `${spaceIcon}` }} />}
+                    nameButton={'GISTs'}
+                    position={'center'}
+                />
+            </Link>
+
+            <Link style={{ textDecoration: "none", display: auth.user? `none`: 'block' }} to='/login'>
+                <ButtonControlPanelContainer
+                    inputIcon={<AccountCircleOutlinedIcon sx={{ marginRight: `${spaceIcon}` }} />}
+                    nameButton={'LOG In'}
+                    position={'last'}
+                />
+            </Link>
+
+            <button onClick={handlerOnClick}
+                style={{ textDecoration: "none", display: auth.user? `block`: 'none', border: 'none', backgroundColor: 'inherit' }} >
+                <ButtonControlPanelContainer
+                    inputIcon={<LoginOutlinedIcon sx={{ marginRight: `${spaceIcon}` }} />}
+                    nameButton={'LOG OUt'}
+                    position={'last'}
+                />
+            </button>
+
+        </Box>
+    )
+}
 export default ControlPanel;
