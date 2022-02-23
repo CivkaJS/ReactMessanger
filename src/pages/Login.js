@@ -22,9 +22,8 @@ const Login = () => {
     const handeleSubmit = async (event) => {
         event.preventDefault();
 
-        await auth.signin({ email, password }, () => {
-            navigate(from, { replace: true })
-        })
+        await auth.signin({ email, password }, () => { navigate(from, { replace: true })})
+        .then(setError(true))
     }
 
     const handleSignUpClick = () => {
