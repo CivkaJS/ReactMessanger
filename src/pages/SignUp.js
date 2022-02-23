@@ -1,34 +1,45 @@
-import { useState, } from "react";
+import { useState, useEffect } from "react";
 import '../App.scss';
 import { Paper, TextField, Button, Link } from "@mui/material";
 import { Error } from "@mui/icons-material";
 import { Box } from "@mui/system";
-import useAuth from "../Hook/useAuth";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import firebase from "../service/firebase";
 
-
-
-const Login = () => {
+const SignUp = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [error, setError] = useState(false);
-    const auth = useAuth();
+    const [info, setInfo] = useState(false);
+
+    const location = useLocation;
     const navigate = useNavigate();
-    const location = useLocation();
 
+    let from = location.state?.from?.pathname || '/login';
 
-    let from = location.state?.from?.pathname || '/profile';
+    useEffect(() => {
+        setInfo(false);
+      }, [])
 
     const handeleSubmit = async (event) => {
         event.preventDefault();
 
-        await auth.signin({ email, password }, () => {
-            navigate(from, { replace: true })
-        })
+        try {
+            const auth = getAuth(firebase);
+            await createUserWithEmailAndPassword(auth, email, password).then(()=>{
+                setInfo(true);
+            });
+            navigate(from, { replace: true });
+        }
+        catch (err) {
+            setInfo(false);
+            setError(err);
+        }
     }
 
-    const handleSignUpClick = () => {
-        navigate('/signup', { replace: true });
+    const handleLoginClick = () => {
+        navigate('/login', { replace: true });
     }
 
     const handleEmailChange = (event) => {
@@ -42,7 +53,7 @@ const Login = () => {
     return (
         <Box className='PageBox'>
             <form className="loginBox" onSubmit={handeleSubmit}>
-                <h2>Open chat</h2>
+                <h2>Registration</h2>
                 <Paper className="loginInputBox" sx={{ backgroundColor: "initial" }} >
                     <TextField sx={{ width: '100%' }}
                         placeholder='Input your e-mail'
@@ -62,21 +73,22 @@ const Login = () => {
                         value={password}
                     />
                     <div className="boxLoginSubmit">
-                        <Link onClick={handleSignUpClick} sx={{
+                        <Link onClick={handleLoginClick} sx={{
                             cursor: "pointer",
                             textDecoration: "none",
                             '&:hover': {
                                 color: 'red'
                             },
-                        }} > Sign Up </Link>
+                        }} > Login </Link>
                         {error && <Error>Error</Error>}
+                        {info && <h3>Регистрация успешно завершена</h3>}
                         <Button onClick={handeleSubmit} type='submit' sx={{
                             backgroundColor: "chocolate",
                             color: "azure",
                             '&:hover': {
                                 backgroundColor: 'burlywood',
                             },
-                        }}> Log in </Button>
+                        }}> Sign Up </Button>
                     </div>
                 </Paper>
             </form>
@@ -84,4 +96,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default SignUp;
